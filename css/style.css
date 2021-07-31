@@ -1,0 +1,82 @@
+
+
+/* canvas 囲む box */
+.canvas_box {
+  width: 360px;
+  height: 100px;
+  margin: 200px auto;
+  overflow: hidden;
+  position: relative;
+}
+
+
+/* エサ */
+.canvas_box::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: rgba(255, 173, 144, 0.8);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: -2%;
+  z-index: -10;
+}
+
+
+/* hover するとエサ移動開始 */
+.canvas_box:hover::before {
+  animation: 2s pacLine infinite;
+}
+
+
+/* エサ move */
+@keyframes pacLine{
+  from{
+    opacity: 1;
+    left: 0%;
+  }
+  72%{
+    opacity: 1;
+    left: 72%;
+  }
+  88%{
+    opacity: .2;
+    left: 88%;
+  }
+  100%{
+    opacity: 0;
+    left: 100%;
+  }
+}
+
+
+
+/* 文字のスタイル（不要なら消してね） */
+.pacpac-txt {
+  width: 100%;
+  height: 100%;
+  padding: 2% 3%;
+  font-size: 20px;
+  font-weight: bold;
+  border: 1.5px solid rgba(255, 173, 144, 0.8);
+  border-radius: 10px;
+  background-color: transparent;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* canvasのスタイル */
+.pac_canvas {
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+}
